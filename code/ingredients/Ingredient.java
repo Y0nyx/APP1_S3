@@ -1,31 +1,17 @@
 package ingredients;
 
-public class Ingredient {
-    private String nom;
-    private String description;
-    private TypeIngredient typeIngredient;
+interface Ingredient{
 
-    public String getNom() {
-        return nom;
-    }
+    public String getNom();
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+    public void setNom(String nom);
+    public String getDescription();
 
-    public String getDescription() {
-        return description;
-    }
+    public void setDescription(String description);
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public TypeIngredient getTypeIngredient();
 
-    public TypeIngredient getTypeIngredient() {
-        return typeIngredient;
-    }
+    public void setTypeIngredient(TypeIngredient typeIngredient);
 
-    public void setTypeIngredient(TypeIngredient typeIngredient) {
-        this.typeIngredient = typeIngredient;
-    }
 }
+

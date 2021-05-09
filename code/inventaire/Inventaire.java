@@ -1,13 +1,24 @@
 package inventaire;
 
-import ingredients.Ingredient;
+import ingredients.Ingredients;
 
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Inventaire {
-    private ArrayList<Ingredient> lesIngredients = new ArrayList<Ingredient>();
+    private static Inventaire Instance;
+    private ArrayList<Ingredients> lesIngredients = new ArrayList<Ingredients>();
 
-    public void ajouter (Ingredient ingredient)
+    private Inventaire(){}
+
+    public static synchronized Inventaire getInstance(){
+        if(Instance == null)
+            Instance = new Inventaire();
+        return Instance;
+    }
+
+    public void ajouter (Ingredients ingredient,)
     {
         lesIngredients.add(ingredient);
     }

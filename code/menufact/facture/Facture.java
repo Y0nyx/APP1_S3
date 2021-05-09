@@ -6,7 +6,7 @@ import menufact.plats.PlatChoisi;
 
 import java.util.ArrayList;
 import java.util.Date;
-
+import menufact.facture.FactureState;
 /**
  * Une facture du systeme Menufact
  * @author Domingo Palao Munoz
@@ -15,10 +15,11 @@ import java.util.Date;
 public class Facture {
     private Date date;
     private String description;
-    private FactureEtat etat;
     private ArrayList<PlatChoisi> platchoisi = new ArrayList<PlatChoisi>();
     private int courant;
     private Client client;
+    private FactureState state;
+    private FactureEtat etat;
 
 
     /**********************Constantes ************/
@@ -71,38 +72,23 @@ public class Facture {
     }
 
     /**
-     * Permet de chager l'état de la facture à PAYEE
+     * Permet de chager l'état de la facture
      */
-    public void payer()
-    {
-       etat = FactureEtat.PAYEE;
+    public void changeState(FactureState state){
+        this.state = state;
     }
     /**
-     * Permet de chager l'état de la facture à FERMEE
+     * Permet de d'obtenir l'etat de la facture
      */
-    public void fermer()
-    {
-       etat = FactureEtat.FERMEE;
+    public FactureState getState(){
+        return state;
     }
 
-    /**
-     * Permet de changer l'état de la facture à OUVERTE
-     * @throws FactureException en cas que la facture soit PAYEE
-     */
-    public void ouvrir() throws FactureException
-    {
-        if (etat == FactureEtat.PAYEE)
-            throw new FactureException("La facture ne peut pas être reouverte.");
-        else
-            etat = FactureEtat.OUVERTE;
+    public void setEtat(FactureEtat etat){
+        this.etat = etat;
     }
 
-    /**
-     *
-     * @return l'état de la facture
-     */
-    public FactureEtat getEtat()
-    {
+    public FactureEtat getEtat(){
         return etat;
     }
 
@@ -111,8 +97,8 @@ public class Facture {
      * @param description la description de la Facture
      */
     public Facture(String description) {
+        this.state = new FactureOuverte(this);
         date = new Date();
-        etat = FactureEtat.OUVERTE;
         courant = -1;
         this.description = description;
     }

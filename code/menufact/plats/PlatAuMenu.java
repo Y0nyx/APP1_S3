@@ -1,9 +1,18 @@
 package menufact.plats;
 
-public class PlatAuMenu {
+import java.util.ArrayList;
+import ingredients.Ingredients;
+
+
+public class PlatAuMenu implements Plat{
     private int code;
     private String description;
     private double prix;
+    private int courant;
+    private Observer chef;
+    private ArrayList<Ingredients> ingredient= new ArrayList<Ingredients>();
+    private ArrayList<double> quantite = new ArrayList<double>();
+    private ArrayList<String> unit = new ArrayList<String>();
 
     public PlatAuMenu(int code, String description, double prix) {
         this.code = code;
@@ -11,8 +20,7 @@ public class PlatAuMenu {
         this.prix = prix;
     }
 
-    public PlatAuMenu() {
-    }
+    public PlatAuMenu() {}
 
     @Override
     public String toString() {
@@ -45,5 +53,15 @@ public class PlatAuMenu {
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public void ajouterIngredient(Ingredients ingredient, double quantite, String unit) {
+        this.ingredient.add(ingredient);
+        this.quantite.add(quantite);
+        this.unit.add(unit);
+    }
+
+    public void notifyObserver(){
+        chef.update();
     }
 }

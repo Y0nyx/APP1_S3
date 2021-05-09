@@ -7,7 +7,9 @@ public class PlatEnfant extends PlatAuMenu{
     }
 
     public PlatEnfant(int code, String description, double prix, double proportion) {
-        super(code, description, prix);
+        setCode(code);
+        setDescription(description);
+        setPrix(prix);
         this.proportion = proportion;
     }
 
@@ -21,4 +23,5 @@ public class PlatEnfant extends PlatAuMenu{
                 "proportion=" + proportion +
                 "} " + super.toString();
     }
+
 }
