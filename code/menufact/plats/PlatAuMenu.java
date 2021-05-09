@@ -11,7 +11,7 @@ public class PlatAuMenu implements Plat{
     private int courant;
     private Observer chef;
     private ArrayList<Ingredients> ingredient= new ArrayList<Ingredients>();
-    private ArrayList<double> quantite = new ArrayList<double>();
+    private ArrayList<Double> quantite = new ArrayList<Double>();
     private ArrayList<String> unit = new ArrayList<String>();
 
     public PlatAuMenu(int code, String description, double prix) {
