@@ -1,11 +1,13 @@
 package menufact;
 
+import inventaire.Inventaire;
 import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;
 
 import java.util.ArrayList;
 
 public class Menu {
+    private static Menu Instance;
     private String description;
     private int courant;
     private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
@@ -13,6 +15,14 @@ public class Menu {
     public Menu(String description) {
         this.description = description;
     }
+
+   /* private Menu(){} */
+
+    /*public static synchronized Menu getInstance(){
+        if(Instance == null)
+            Instance = new Menu();
+        return Instance;
+    }*/
 
     void ajoute (PlatAuMenu p)
     {

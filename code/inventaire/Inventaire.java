@@ -2,13 +2,14 @@ package inventaire;
 
 import ingredients.Ingredients;
 
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Inventaire {
     private static Inventaire Instance;
     private ArrayList<Ingredients> lesIngredients = new ArrayList<Ingredients>();
+    private ArrayList<Double> lesQuantites = new ArrayList<Double>();
+    private ArrayList<String> Lunit = new ArrayList<String>();
 
     private Inventaire(){}
 
@@ -18,9 +19,14 @@ public class Inventaire {
         return Instance;
     }
 
-    public void ajouter (Ingredients ingredient,)
+    public void ajouter (Ingredients ingredient,double quantite, String unite)
     {
-        lesIngredients.add(ingredient);
+        this.lesIngredients.add(ingredient);
+        this.lesQuantites.add(quantite);
+        this.Lunit.add(unite);
     }
+
+
+
 
 }
