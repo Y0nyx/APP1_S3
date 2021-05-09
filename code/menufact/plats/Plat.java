@@ -1,6 +1,5 @@
 package menufact.plats;
 
-import ingredients.Ingredient
 interface Plat{
 
     @Override

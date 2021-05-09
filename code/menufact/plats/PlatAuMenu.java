@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import ingredients.Ingredients;
 
 
+
 public class PlatAuMenu implements Plat{
     private int code;
     private String description;
     private double prix;
     private int courant;
-    private Observer chef;
     private ArrayList<Ingredients> ingredient= new ArrayList<Ingredients>();
     private ArrayList<double> quantite = new ArrayList<double>();
     private ArrayList<String> unit = new ArrayList<String>();
@@ -59,9 +59,5 @@ public class PlatAuMenu implements Plat{
         this.ingredient.add(ingredient);
         this.quantite.add(quantite);
         this.unit.add(unit);
-    }
-
-    public void notifyObserver(){
-        chef.update();
     }
 }
