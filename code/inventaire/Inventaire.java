@@ -55,6 +55,12 @@ public class Inventaire {
             this.Lunit.add(unite);
     }
 
+    /**
+     * L'ajout de quantite dans un ingredient
+     * @param quantite
+     * @param ingredient
+     * @throws InventaireException
+     */
     public void ajouterQuantite(double quantite, Ingredients ingredient) throws InventaireException
     {
         for(int i = 0; i< lesIngredients.size();i++){
@@ -66,6 +72,9 @@ public class Inventaire {
         }
     }
 
+    /**
+     * View de l'inventaire complet
+     */
     public void viewInventaire(){
             System.out.println("inventaire.Inventaire{");
         for (int i = 0; i < lesIngredients.size(); i++) {

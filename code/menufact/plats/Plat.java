@@ -1,5 +1,7 @@
 package menufact.plats;
 
+import ingredients.Ingredients;
+
 public interface Plat{
 
     @Override
@@ -15,4 +17,8 @@ public interface Plat{
     public double getPrix();
 
     public void setPrix(double prix);
+
+    public void ajouterIngredient(Ingredients ingredients, double quantite, String unit);
+
+    public void viewRecette();
 }

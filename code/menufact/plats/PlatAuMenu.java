@@ -60,4 +60,14 @@ class PlatAuMenu implements Plat{
         this.quantite.add(quantite);
         this.unit.add(unit);
     }
+
+    public void viewRecette(){
+        System.out.println("plats.PlatAuMenu{");
+        for (int i = 0; i < ingredient.size(); i++) {
+            System.out.println("ingredient=" + ingredient.get(i)+
+                    ", quantite=" + quantite.get(i) +
+                    ", unit=" + unit.get(i));
+        }
+        System.out.println('}');
+    }
 }

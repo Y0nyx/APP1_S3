@@ -12,6 +12,7 @@ public class PlatChoisi {
     public PlatChoisi(Plat plat, int quantite) {
         this.plat = plat;
         this.quantite = quantite;
+        this.etat = new PlatChoisiCommande();
     }
 
     @Override
@@ -48,6 +49,8 @@ public class PlatChoisi {
     public void setEtat(PlatChoisiEtat platChoisiEtat){
         this.etat = platChoisiEtat;
     }
+
+    public PlatChoisiEtat getEtat(){ return etat;}
 
 
 }
