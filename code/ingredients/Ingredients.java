@@ -38,4 +38,12 @@ public class Ingredients implements Ingredient{
     public void setTypeIngredient(TypeIngredient typeIngredient){
         this.typeIngredient = typeIngredient;
     }
+
+    public String toString(){
+        return "ingredients.Ingredients{" +
+                "nom=" + getNom() +
+                ", description='" + getDescription() + '\'' +
+                ", Type=" + getTypeIngredient() +
+                "}\n";
+    }
 }

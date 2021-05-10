@@ -1,6 +1,6 @@
 package menufact.plats;
 
-interface Plat{
+public interface Plat{
 
     @Override
     public String toString();

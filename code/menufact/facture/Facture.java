@@ -80,7 +80,7 @@ public class Facture {
     /**
      * Permet de d'obtenir l'etat de la facture
      */
-    public FactureState getState(){
+    public FactureState getState() throws FactureException{
         return state;
     }
 
@@ -108,13 +108,11 @@ public class Facture {
      * @param p un plat choisi
      * @throws FactureException Seulement si la facture est OUVERTE
      */
-    public void ajoutePlat(PlatChoisi p) throws FactureException
+    public void ajouterPlat(PlatChoisi p)
     {
         if (etat == FactureEtat.OUVERTE)
             platchoisi.add(p);
             p.notifyAllObserver();
-        else
-            throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
     }
 
     /**

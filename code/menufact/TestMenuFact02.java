@@ -4,29 +4,31 @@ import menufact.facture.exceptions.FactureException;
 import menufact.exceptions.MenuException;
 import menufact.facture.Facture;
 import menufact.plats.Plat;
+import menufact.plats.PlatAuMenuFactory;
 import menufact.plats.PlatChoisi;
-import menufact.plats.PlatSante;
 
 public class TestMenuFact02 {
 
     public static void main(String[] args) {
+
         boolean trace = true;
 
         TestMenuFact02 t = new TestMenuFact02();
 
-        Plat p1 = new Plat(0,"PlatAuMenu0",10);
-        Plat p2 = new Plat(1,"PlatAuMenu1",20);
-        Plat p3 = new Plat(2,"PlatAuMenu2",30);
-        Plat p4 = new Plat(3,"PlatAuMenu3",40);
-        Plat p5 = new Plat(4,"PlatAuMenu4",50);
+        PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
 
 
-        PlatSante ps1 = new PlatSante(10,"PlatSante0",10,11,11,11);
-        PlatSante ps2 = new PlatSante(11,"PlatSante1",20,11,11,11);
-        PlatSante ps3 = new PlatSante(12,"PlatSante2",30,11,11,11);
-        PlatSante ps4 = new PlatSante(13,"PlatSante3",40,11,11,11);
-        PlatSante ps5 = new PlatSante(14,"PlatSante4",50,11,11,11);
+        Plat p1 = pFactory.buildPlatAuMenu(0,"PlatAuMenu0",10);
+        Plat p2 = pFactory.buildPlatAuMenu(1,"PlatAuMenu1",20);
+        Plat p3 = pFactory.buildPlatAuMenu(2,"PlatAuMenu2",30);
+        Plat p4 = pFactory.buildPlatAuMenu(3,"PlatAuMenu3",40);
+        Plat p5 = pFactory.buildPlatAuMenu(4,"PlatAuMenu4",50);
 
+        Plat ps1 = pFactory.buildPlatSante(10,"PlatSante0",10,11,11,11);
+        Plat ps2 = pFactory.buildPlatSante(11,"PlatSante1",20,11,11,11);
+        Plat ps3 = pFactory.buildPlatSante(12,"PlatSante2",30,11,11,11);
+        Plat ps4 = pFactory.buildPlatSante(13,"PlatSante3",40,11,11,11);
+        Plat ps5 = pFactory.buildPlatSante(14,"PlatSante4",50,11,11,11);
 
         Menu m1 = new Menu("menufact.Menu 1");
         Menu m2 = new Menu("menufact.Menu 2");
@@ -88,7 +90,7 @@ public class TestMenuFact02 {
         }
 
         try {
-            f1.ouvrir();
+            f1.getState();
         } catch (FactureException fe)
         {
             System.out.println(fe.getMessage());
@@ -104,8 +106,8 @@ public class TestMenuFact02 {
         System.out.println(f1.genererFacture());
     }
 
-    private void test1_AffichePlatsAuMenu(boolean trace, PlatAuMenu p1, PlatAuMenu p2,
-                                                 PlatAuMenu p3, PlatAuMenu p4, PlatAuMenu p5)
+    private void test1_AffichePlatsAuMenu(boolean trace, Plat p1, Plat p2,
+                                                 Plat p3, Plat p4, Plat p5)
     {
         System.out.println("=== test1_AffichePlatsAuMenu");
         if(trace)
@@ -119,8 +121,8 @@ public class TestMenuFact02 {
     }
 
 
-   private void test2_AffichePlatsSante(boolean trace, PlatSante ps1, PlatSante ps2,
-                                               PlatSante ps3, PlatSante ps4, PlatSante ps5)
+   private void test2_AffichePlatsSante(boolean trace, Plat ps1, Plat ps2,
+                                               Plat ps3, Plat ps4, Plat ps5)
     {
         System.out.println("=== test2_AffichePlatsSante");
 
@@ -148,11 +150,11 @@ public class TestMenuFact02 {
 
 
     private void test4_AjoutPlatsAuMenu(boolean trace, Menu m1,
-                                        PlatAuMenu p1, PlatAuMenu p2,
-                                        PlatSante ps1, PlatSante ps2,
+                                        Plat p1, Plat p2,
+                                        Plat ps1, Plat ps2,
                                         Menu m2,
-                                        PlatAuMenu p3, PlatAuMenu p4,
-                                        PlatSante ps3, PlatSante ps4)
+                                        Plat p3, Plat p4,
+                                        Plat ps3, Plat ps4)
     {
         System.out.println("=== test4_AjoutPlatsAuMenu");
         System.out.println("=== Ajout de plats au menu 1");
@@ -239,15 +241,18 @@ public class TestMenuFact02 {
         System.out.println("===test7_CreerFacture");
 
         PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(),5);
+        /*
         try
         {
-            f1.ajoutePlat(platChoisi);
+            f1.ajouterPlat(platChoisi);
         }
         catch (FactureException fe)
         {
             throw fe;
         }
         System.out.println(f1);
+
+         */
     }
 
 
@@ -270,15 +275,18 @@ public class TestMenuFact02 {
         }
 
         PlatChoisi platChoisi = new PlatChoisi(m1.platCourant(),5);
+        /*
         try
         {
-            f1.ajoutePlat(platChoisi);
+            f1.ajouterPlat(platChoisi);
         }
         catch (FactureException fe)
         {
             throw fe;
         }
         System.out.println(f1);
+
+         */
     }
 
     private void test9_PayerFacture(Facture f1)
@@ -287,8 +295,11 @@ public class TestMenuFact02 {
 
         System.out.println("Avant payer la facture");
         System.out.println(f1);
-        f1.payer();
+        //f1.getState().setState(new FacturePayee(f1));
         System.out.println("Apres avoir paye la facture");
         System.out.println(f1);
     }
+
+
 }
+

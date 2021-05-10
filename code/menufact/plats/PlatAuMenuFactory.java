@@ -14,4 +14,9 @@ public class PlatAuMenuFactory {
     public PlatSante buildPlatSante(int code, String description, double prix, double kcal, double chol, double gras){
         return new PlatSante(code,description,prix,kcal,chol,gras);
     }
+
+    public PlatChoisi buildPlatChoisi(Plat plat, int quantite){
+        return new PlatChoisi(plat,quantite);
+    }
+
 }

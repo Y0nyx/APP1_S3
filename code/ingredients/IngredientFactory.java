@@ -3,7 +3,7 @@ package ingredients;
 public class IngredientFactory {
     public IngredientFactory(){}
 
-    public Ingredient buildIngredient(String nom, String description, TypeIngredient typeIngredient ){
+    public Ingredients buildIngredient(String nom, String description, TypeIngredient typeIngredient ){
         if(typeIngredient == TypeIngredient.VIANDE)
             return new Viande(nom,description,typeIngredient);
         else if(typeIngredient == TypeIngredient.LEGUME)

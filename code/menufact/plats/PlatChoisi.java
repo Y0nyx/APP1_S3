@@ -1,16 +1,15 @@
 package menufact.plats;
 
 import menufact.Observer;
-
 import java.util.ArrayList;
 
 public class PlatChoisi {
-    private PlatAuMenu plat;
+    private Plat plat;
     private int quantite;
     private PlatChoisiEtat etat;
     private ArrayList<Observer> observers = new ArrayList<Observer>();
 
-    public PlatChoisi(PlatAuMenu plat, int quantite) {
+    public PlatChoisi(Plat plat, int quantite) {
         this.plat = plat;
         this.quantite = quantite;
     }
@@ -31,7 +30,7 @@ public class PlatChoisi {
         this.quantite = quantite;
     }
 
-    public PlatAuMenu getPlat() {
+    public Plat getPlat() {
         return plat;
     }
 
