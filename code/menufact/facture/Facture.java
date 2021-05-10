@@ -9,8 +9,8 @@ import java.util.Date;
 import menufact.facture.FactureState;
 /**
  * Une facture du systeme Menufact
- * @author Domingo Palao Munoz
- * @version 1.0
+ * @author Charles Veillette
+ * @version 2.0
  */
 public class Facture {
     private Date date;
