@@ -14,9 +14,12 @@ public class Menu {
     public Menu(String description){this.description = description;}
     public Menu(){}
 
-    void ajoute (Plat p)
+    void ajoute (Plat p) throws MenuException
     {
-        plat.add(p);
+        if(p.getPrix() < 0)
+            throw new MenuException("Vous ne pouvez pas ajouté un plat au prix négatif");
+        else
+            plat.add(p);
     }
 
     public void position(int i)
