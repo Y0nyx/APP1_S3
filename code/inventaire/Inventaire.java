@@ -19,7 +19,6 @@ public class Inventaire {
      * Il s'agit d'un Singleton
      */
     private static Inventaire Instance;
-    private boolean isInInventairel;
     private ArrayList<Ingredients> lesIngredients = new ArrayList<Ingredients>();
     private ArrayList<Double> lesQuantites = new ArrayList<Double>();
     private ArrayList<String> Lunit = new ArrayList<String>();

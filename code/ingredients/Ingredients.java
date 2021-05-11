@@ -86,6 +86,6 @@ public class Ingredients implements Ingredient{
                 "nom=" + getNom() +
                 ", description='" + getDescription() + '\'' +
                 ", Type=" + getTypeIngredient() +
-                "}";
+                "}";+
     }
 }
