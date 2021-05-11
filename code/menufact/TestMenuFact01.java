@@ -13,6 +13,7 @@ public class TestMenuFact01 {
 
         try {
             PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
+            Client unClient = new Client(1, "Charles", "qwerty");
 
             System.out.println("===menufact.plats.PlatAuMenu Constructeur 3 arguments");
             Plat p1 = pFactory.buildPlatAuMenu(0, "Frites sauce", 11.50);
@@ -54,6 +55,10 @@ public class TestMenuFact01 {
             Facture facture = new Facture("Ma facture");
             System.out.println(facture);
 
+            System.out.println("== Ajout un client à la facture");
+            facture.associerClient(unClient);
+            System.out.println(facture);
+
             System.out.println("== Ajout d'un plat choisie à la facture");
             facture.ajouterPlat(pch1);
             System.out.println(facture);
@@ -90,6 +95,57 @@ public class TestMenuFact01 {
             System.out.println(fe.getMessage());
         }
 
+        try {
+            Facture facture2 = new Facture("Autre facture");
+            Client paul = new Client(1, "paul", "abc123");
+            System.out.println("facture Fermée ajout Client");
+            facture2.getState().setState(FactureEtat.FERMEE);
+            facture2.getState().associerClientFacture(paul);
+        }
+        catch (Exception fe)
+        {
+            System.out.println(fe.getMessage());
+        }
+
+        try {
+            Facture facture2 = new Facture("Autre facture");
+            PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
+            Plat ps2 = pFactory.buildPlatSante(3, "Salade Cesar", 8.25, 100, 10, 1);
+            PlatChoisi p = new PlatChoisi(ps2, 2);
+            System.out.println("facture Fermée ajout Plat");
+            facture2.getState().setState(FactureEtat.FERMEE);
+            facture2.getState().ajouterPlatFacture(p);
+        }
+        catch (Exception fe)
+        {
+            System.out.println(fe.getMessage());
+        }
+
+        try {
+            Facture facture2 = new Facture("Autre facture");
+            Client paul = new Client(1, "paul", "abc123");
+            System.out.println("facture Payée ajout Client");
+            facture2.getState().setState(FactureEtat.PAYEE);
+            facture2.getState().associerClientFacture(paul);
+        }
+        catch (Exception fe)
+        {
+            System.out.println(fe.getMessage());
+        }
+
+        try {
+            Facture facture2 = new Facture("Autre facture");
+            PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
+            Plat ps2 = pFactory.buildPlatSante(3, "Salade Cesar", 8.25, 100, 10, 1);
+            PlatChoisi p = new PlatChoisi(ps2, 2);
+            System.out.println("facture Payée ajout Plat");
+            facture2.getState().setState(FactureEtat.PAYEE);
+            facture2.getState().ajouterPlatFacture(p);
+        }
+        catch (Exception fe)
+        {
+            System.out.println(fe.getMessage());
+        }
 
 
         }

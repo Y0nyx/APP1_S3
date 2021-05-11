@@ -12,6 +12,11 @@ import menufact.plats.*;
 public class TestUnitaire {
     public static void main(String[] args) {
     TestUnitaire test = new TestUnitaire();
+    Client paulo = null;
+    Ingredients i = null;
+    Menu m1 = new Menu();
+    PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
+    Plat p1Negatif = pFactory.buildPlatAuMenu(0,"PlatAuMenu0",-10);
     /*
 
         try {
@@ -24,9 +29,55 @@ public class TestUnitaire {
 
         try {
             test.testPlat();
+        }catch(InventaireException | MenuException e1){
+            System.out.println(e1.getMessage());
+        }
+        try {
+            System.out.println("Ingrédient Déja inventaire");
+            IngredientFactory iFactory = new IngredientFactory();
+            Ingredients i1 = iFactory.buildIngredient("paprika","epice", TypeIngredient.EPICE);
+            Inventaire.getInstance().ajouter(i1,10,"Kg");
+            Inventaire.getInstance().ajouter(i1,10,"Kg");
         }catch(InventaireException e1){
             System.out.println(e1.getMessage());
+        }
 
+        try {
+            System.out.println("Rajouter Quantité négative inventaire");
+            IngredientFactory iFactory = new IngredientFactory();
+            Ingredients i1 = iFactory.buildIngredient("paprika","epice", TypeIngredient.EPICE);
+            Inventaire.getInstance().ajouterQuantite(-10, i1);
+            Inventaire.getInstance().viewInventaire();
+        }catch(InventaireException e1){
+            System.out.println(e1.getMessage());
+        }
+
+        try {
+            System.out.println("Rajouter ingrédient inconnue");
+            IngredientFactory iFactory = new IngredientFactory();
+            Ingredients i1 = iFactory.buildIngredient("paprika","epice", TypeIngredient.EPICE);
+            System.out.println("l'ingrédient que vous voulez rajouter est null");
+        }catch(Exception e1){
+            System.out.println(e1.getMessage());
+        }
+
+        try
+        {
+          System.out.println("Test Nom vide");
+          paulo = new Client(1, null, "aaa111");
+          paulo.getNom();
+          System.out.println("Le Client a un nom null");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
+        try {
+            System.out.println("Ajouter plat prix négatif");
+            m1.ajoute(p1Negatif);
+        }catch (MenuException e){
+            System.out.println(e.getMessage());
         }
 
     }
@@ -66,7 +117,7 @@ public class TestUnitaire {
 
     }
 
-    public void testPlat() throws InventaireException {
+    public void testPlat() throws InventaireException, MenuException {
         PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
         IngredientFactory iFactory = new IngredientFactory();
         Menu m = new Menu();

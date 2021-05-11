@@ -9,7 +9,7 @@ import menufact.plats.PlatChoisi;
 
 public class TestMenuFact02 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MenuException {
 
         boolean trace = true;
 
@@ -29,6 +29,7 @@ public class TestMenuFact02 {
         Plat ps3 = pFactory.buildPlatSante(12,"PlatSante2",30,11,11,11);
         Plat ps4 = pFactory.buildPlatSante(13,"PlatSante3",40,11,11,11);
         Plat ps5 = pFactory.buildPlatSante(14,"PlatSante4",50,11,11,11);
+
 
         Menu m1 = new Menu("menufact.Menu 1");
         Menu m2 = new Menu("menufact.Menu 2");
@@ -154,8 +155,7 @@ public class TestMenuFact02 {
                                         Plat ps1, Plat ps2,
                                         Menu m2,
                                         Plat p3, Plat p4,
-                                        Plat ps3, Plat ps4)
-    {
+                                        Plat ps3, Plat ps4) throws MenuException {
         System.out.println("=== test4_AjoutPlatsAuMenu");
         System.out.println("=== Ajout de plats au menu 1");
         m1.ajoute(p1);
@@ -174,6 +174,8 @@ public class TestMenuFact02 {
             System.out.println(m1);
             System.out.println(m2);
         }
+
+
     }
 
 

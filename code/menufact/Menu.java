@@ -30,9 +30,13 @@ public class Menu {
      * ajoute un plat au menu
      * @param p
      */
-    void ajoute (Plat p)
+
+    void ajoute (Plat p) throws MenuException
     {
-        plat.add(p);
+        if(p.getPrix() < 0)
+            throw new MenuException("Vous ne pouvez pas ajouté un plat au prix négatif");
+        else
+            plat.add(p);
     }
 
     /**
