@@ -1,8 +1,13 @@
 package menufact.plats;
 
 import ingredients.Ingredients;
-
 import java.util.ArrayList;
+/**
+ * interface plat
+ * Permet de faire le lien entre les plats et la factory
+ * @author Charles Veillette
+ * @version 1.0
+ */
 
 public interface Plat{
 

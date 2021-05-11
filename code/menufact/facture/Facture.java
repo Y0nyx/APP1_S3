@@ -1,5 +1,6 @@
 package menufact.facture;
 
+import inventaire.Exception.InventaireException;
 import inventaire.Inventaire;
 import menufact.Client;
 import menufact.facture.exceptions.FactureException;
@@ -115,7 +116,11 @@ public class Facture {
     {
         if (etat == FactureEtat.OUVERTE)
             platchoisi.add(p);
+        try {
             Inventaire.getInstance().commande(p);
+        }catch(InventaireException e){
+            System.out.println(e.getMessage());
+        }
             this.chef = p.getChef();
             p.getEtat().next(p);
     }
