@@ -9,19 +9,19 @@ public class FactureOuverte extends FactureState{
         facture.setEtat(FactureEtat.OUVERTE);
     }
 
-    public void associerClientFacture(Client client, Facture facture){
+    public void associerClientFacture(Client client){
         facture.associerClient(client);
     }
 
-    public double totalFacture(Facture facture){
+    public double totalFacture(){
         return facture.total();
     }
 
-    public void ajouterPlatFacture(PlatChoisi p, Facture facture){
+    public void ajouterPlatFacture(PlatChoisi p){
         facture.ajouterPlat(p);
     }
 
-    public void setState(Facture facture, FactureEtat factureEtat){
+    public void setState( FactureEtat factureEtat){
         if(factureEtat == FactureEtat.OUVERTE){
             facture.changeState(new FactureOuverte(facture));
         }else if(factureEtat == FactureEtat.PAYEE){
@@ -31,11 +31,11 @@ public class FactureOuverte extends FactureState{
         }
     }
 
-    public void next(Facture facture){
+    public void next(){
         facture.changeState(new FacturePayee(facture));
     }
 
-    public void prev(Facture facture){
+    public void prev(){
         System.out.println("Le systeme est deja a ca racine");
     }
 }

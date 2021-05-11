@@ -9,19 +9,19 @@ public class FacturePayee extends FactureState{
         facture.setEtat(FactureEtat.PAYEE);
     }
 
-    public void associerClientFacture(Client client, Facture facture){
+    public void associerClientFacture(Client client){
         System.out.println("Vous ne pouvez pas associer un client a ce stade");
     }
 
-    public double totalFacture(Facture facture){
+    public double totalFacture(){
         return facture.total();
     }
 
-    public void ajouterPlatFacture(PlatChoisi p, Facture facture){
+    public void ajouterPlatFacture(PlatChoisi p){
         System.out.println("Vous ne pouvez pas changer la facture a ce stade");
     }
 
-    public void setState(Facture facture, FactureEtat factureEtat){
+    public void setState(FactureEtat factureEtat){
         if(factureEtat == FactureEtat.OUVERTE){
             facture.changeState(new FactureOuverte(facture));
         }else if(factureEtat == FactureEtat.PAYEE){
@@ -31,11 +31,11 @@ public class FacturePayee extends FactureState{
         }
     }
 
-    public void next(Facture facture){
+    public void next(){
         facture.changeState(new FactureFermee(facture));
     }
 
-    public void prev(Facture facture){
+    public void prev(){
         facture.changeState(new FactureOuverte(facture));
     }
 }

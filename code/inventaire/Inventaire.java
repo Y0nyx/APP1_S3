@@ -2,6 +2,9 @@ package inventaire;
 
 import ingredients.Ingredients;
 import inventaire.Exception.InventaireException;
+import menufact.plats.PlatChoisi;
+import menufact.plats.PlatChoisiCommande;
+import menufact.plats.PlatChoisiImpossible;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -85,6 +88,23 @@ public class Inventaire {
         System.out.println('}');
     }
 
+    public ArrayList<Ingredients> getLesIngredients(){
+        return lesIngredients;
+    }
+
+    public ArrayList<Double> getLesQuantites(){
+        return lesQuantites;
+    }
+
+    public void commande(PlatChoisi platChoisi){
+        for(int i = 0; i < platChoisi.getPlat().getIngredients().size(); i++){
+            for (int j = 0; j < Inventaire.getInstance().getLesIngredients().size(); j++){
+                if(platChoisi.getPlat().getIngredients().get(i) == Inventaire.getInstance().getLesIngredients().get(j)){
+                    Inventaire.getInstance().getLesQuantites().set(j,(Inventaire.getInstance().getLesQuantites().get(j)-(platChoisi.getPlat().getQuantite().get(i)*platChoisi.getQuantite())));
+                }
+            }
+        }
+    }
 }
 
 

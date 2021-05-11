@@ -9,6 +9,14 @@ public class ChefObserver extends Observer {
         this.platChoisi.attach(this);
     }
     public void update(){
-        System.out.println("Le plat est commande !");
+        System.out.println("Le chef a ete notifier");
     }
+
+    public void next(){
+        platChoisi.getEtat().next(platChoisi);
+    }
+    public void prev(){
+        platChoisi.getEtat().prev(platChoisi);
+    }
+
 }

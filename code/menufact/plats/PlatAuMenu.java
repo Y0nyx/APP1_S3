@@ -70,4 +70,12 @@ class PlatAuMenu implements Plat{
         }
         System.out.println('}');
     }
+
+    public ArrayList<Ingredients> getIngredients(){
+        return ingredient;
+    }
+
+    public ArrayList<Double> getQuantite(){
+        return quantite;
+    }
 }

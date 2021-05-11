@@ -69,11 +69,11 @@ public class TestMenuFact01 {
             System.out.println(facture);
             System.out.println("Etat = " + facture.getEtat());
 
-            facture.getState().setState(facture, FactureEtat.FERMEE);
+            facture.getState().setState(FactureEtat.FERMEE);
             System.out.println(facture);
             System.out.println("Etat = " + facture.getEtat());
 
-            facture.getState().setState(facture, FactureEtat.OUVERTE);
+            facture.getState().setState(FactureEtat.OUVERTE);
             System.out.println(facture);
             System.out.println("Etat = " + facture.getEtat());
 

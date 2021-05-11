@@ -6,6 +6,7 @@ import ingredients.TypeIngredient;
 import inventaire.Exception.InventaireException;
 import inventaire.Inventaire;
 import menufact.exceptions.MenuException;
+import menufact.facture.Facture;
 import menufact.plats.*;
 
 public class TestUnitaire {
@@ -100,17 +101,16 @@ public class TestUnitaire {
         m.ajoute(ps4);
         m.ajoute(ps5);
 
-        System.out.println("===Test de la notification du chef");
-        PlatChoisi pc1 = pFactory.buildPlatChoisi(p1,1);
-        new ChefObserver(pc1);
-        pc1.notifyAllObserver();
         System.out.println('\n'+"===Test l'etat du plat"+'\n');
+        PlatChoisi pc1 = pFactory.buildPlatChoisi(p1,1);
         System.out.println(pc1.getEtat());
         pc1.getEtat().next(pc1);
         System.out.println(pc1.getEtat());
         pc1.getEtat().next(pc1);
         System.out.println(pc1.getEtat());
         pc1.getEtat().next(pc1);
+        System.out.println(pc1.getEtat());
+
 
         System.out.println('\n'+"===Test de l'ajout d'ingredient dans l'inventaire"+'\n');
         Inventaire.getInstance().ajouter(i1,10,"Kg");
@@ -125,5 +125,35 @@ public class TestUnitaire {
         p1.ajouterIngredient(i2,4,"Kg");
         p1.ajouterIngredient(i3,5,"Kg");
         p1.viewRecette();
+
+        ps1.ajouterIngredient(i1,4,"Kg");
+        ps1.ajouterIngredient(i2,5,"Kg");
+        ps1.ajouterIngredient(i3,2,"Kg");
+        ps1.ajouterIngredient(i4,7,"Kg");
+        ps1.viewRecette();
+        System.out.println(ps1);
+
+        System.out.println("===Test de l'inventaire"+'\n');
+        PlatChoisi pc2 = pFactory.buildPlatChoisi(p1,1);
+        System.out.println(pc2.getEtat());
+        PlatChoisi pc3 = pFactory.buildPlatChoisi(ps1,1);
+        System.out.println(pc3.getEtat());
+        PlatChoisi pc4 = pFactory.buildPlatChoisi(p1,100);
+        System.out.println(pc4.getEtat());
+
+        System.out.println("===Test de l'inventaire avec la facture"+'\n');
+        Inventaire.getInstance().viewInventaire();
+        Facture facture = new Facture("Ma facture");
+        facture.ajouterPlat(pc2);
+        facture.ajouterPlat(pc3);
+        Inventaire.getInstance().viewInventaire();
+
+        System.out.println("===Test de creation d'un client"+'\n');
+        Client client01 = new Client(0,"Charles","23424523424");
+        System.out.println(client01);
+
+        System.out.println("===Test de generation de facture"+'\n');
+        facture.associerClient(client01);
+        System.out.println(facture.genererFacture());
     }
 }

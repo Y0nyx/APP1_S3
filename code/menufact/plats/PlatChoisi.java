@@ -2,17 +2,33 @@ package menufact.plats;
 
 import menufact.Observer;
 import java.util.ArrayList;
+import inventaire.Inventaire;
 
 public class PlatChoisi {
     private Plat plat;
     private int quantite;
     private PlatChoisiEtat etat;
-    private ArrayList<Observer> observers = new ArrayList<Observer>();
+    private ChefObserver chef;
 
     public PlatChoisi(Plat plat, int quantite) {
         this.plat = plat;
         this.quantite = quantite;
-        this.etat = new PlatChoisiCommande();
+        new ChefObserver(this);
+        for(int i = 0; i < plat.getIngredients().size(); i++){
+            for (int j = 0; j < Inventaire.getInstance().getLesIngredients().size(); j++){
+                if(plat.getIngredients().get(i) == Inventaire.getInstance().getLesIngredients().get(j)){
+                    if((plat.getQuantite().get(i)*quantite) > Inventaire.getInstance().getLesQuantites().get(j))
+                        this.etat = new PlatChoisiImpossible();
+                    else
+                        this.etat = new PlatChoisiCommande();
+
+
+                }
+            }
+        }
+        if(this.etat == null){
+            this.etat = new PlatChoisiCommande();
+        }
     }
 
     @Override
@@ -37,13 +53,13 @@ public class PlatChoisi {
 
 
     public void notifyAllObserver() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
+
+            chef.update();
+
     }
 
-    public void attach(Observer observer ){
-            observers.add(observer);
+    public void attach(ChefObserver chef ){
+            this.chef = chef;
         }
 
     public void setEtat(PlatChoisiEtat platChoisiEtat){
@@ -52,5 +68,5 @@ public class PlatChoisi {
 
     public PlatChoisiEtat getEtat(){ return etat;}
 
-
+    public ChefObserver getChef(){ return chef;}
 }

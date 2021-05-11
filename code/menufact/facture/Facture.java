@@ -1,7 +1,9 @@
 package menufact.facture;
 
+import inventaire.Inventaire;
 import menufact.Client;
 import menufact.facture.exceptions.FactureException;
+import menufact.plats.ChefObserver;
 import menufact.plats.PlatChoisi;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class Facture {
     private Client client;
     private FactureState state;
     private FactureEtat etat;
+    private ChefObserver chef;
 
 
     /**********************Constantes ************/
@@ -112,7 +115,9 @@ public class Facture {
     {
         if (etat == FactureEtat.OUVERTE)
             platchoisi.add(p);
-            p.notifyAllObserver();
+            Inventaire.getInstance().commande(p);
+            this.chef = p.getChef();
+            p.getEtat().next(p);
     }
 
     /**
