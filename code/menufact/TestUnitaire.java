@@ -7,6 +7,9 @@ import inventaire.Exception.InventaireException;
 import inventaire.Inventaire;
 import menufact.exceptions.MenuException;
 import menufact.facture.Facture;
+import menufact.facture.FactureEtat;
+import menufact.facture.FactureState;
+import menufact.facture.exceptions.FactureException;
 import menufact.plats.*;
 
 public class TestUnitaire {
@@ -206,5 +209,50 @@ public class TestUnitaire {
         System.out.println("===Test de generation de facture"+'\n');
         facture.associerClient(client01);
         System.out.println(facture.genererFacture());
+    }
+
+    public void testMenu() throws MenuException{
+        Menu menu = new Menu();
+        PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
+
+        Plat p1 = pFactory.buildPlatAuMenu(0,"PlatAuMenu0",10);
+        Plat p2 = pFactory.buildPlatAuMenu(1,"PlatAuMenu1",20);
+
+        System.out.println("===Test d'ajout au menu"+'\n');
+        menu.ajoute(p1);
+        menu.ajoute(p1);
+
+        System.out.println("===Test du courant du menu"+'\n');
+        menu.positionSuivante();
+        System.out.println(menu.platCourant());
+        menu.positionPrecedente();
+        System.out.println(menu.platCourant());
+        menu.position(0);
+        System.out.println(menu.platCourant());
+
+
+    }
+
+    public void testFactory() throws FactureException, MenuException{
+        Menu menu = new Menu();
+        PlatAuMenuFactory pFactory = new PlatAuMenuFactory();
+
+        Plat p1 = pFactory.buildPlatAuMenu(0,"PlatAuMenu0",10);
+        Plat p2 = pFactory.buildPlatAuMenu(1,"PlatAuMenu1",20);
+
+        PlatChoisi pc2 = pFactory.buildPlatChoisi(p1,1);
+        PlatChoisi pc3 = pFactory.buildPlatChoisi(p2,1);
+
+        menu.ajoute(p1);
+        menu.ajoute(p1);
+
+        Facture facture = new Facture("Facture test");
+        Client client = new Client(0,"domingo","123352431431");
+
+        System.out.println("===Test fonctionnalite de la facture"+'\n');
+        facture.associerClient(client);
+        facture.ajouterPlat(pc2);
+        facture.ajouterPlat(pc3);
+        facture.getState().setState(FactureEtat.PAYEE);
     }
 }

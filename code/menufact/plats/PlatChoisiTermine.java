@@ -26,6 +26,6 @@ public class PlatChoisiTermine extends PlatChoisiEtat{
      * @return String message
      */
     public String toString(){
-        return "Le plat choisi a est termine";
+        return "Le plat choisi est termine";
     }
 }

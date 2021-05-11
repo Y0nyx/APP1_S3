@@ -26,7 +26,7 @@ public class Inventaire {
     /**
      * Constructeur privee d'inventaire
      */
-    private Inventaire(){this.isInInventairel = true;}
+    private Inventaire(){}
 
     /**
      * getInstance d'inventaire qui permet
