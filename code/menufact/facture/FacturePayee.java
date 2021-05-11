@@ -6,7 +6,8 @@ import menufact.plats.PlatChoisi;
 public class FacturePayee extends FactureState{
 
     public FacturePayee(Facture facture){
-        facture.setEtat(FactureEtat.PAYEE);
+        this.facture = facture;
+        this.facture.setEtat(FactureEtat.PAYEE);
     }
 
     public void associerClientFacture(Client client){

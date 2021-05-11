@@ -6,7 +6,8 @@ import menufact.plats.PlatChoisi;
 public class FactureOuverte extends FactureState{
 
     public FactureOuverte(Facture facture){
-        facture.setEtat(FactureEtat.OUVERTE);
+        this.facture = facture;
+        this.facture.setEtat(FactureEtat.OUVERTE);
     }
 
     public void associerClientFacture(Client client){

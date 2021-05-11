@@ -6,7 +6,8 @@ import menufact.plats.PlatChoisi;
 public class FactureFermee extends FactureState{
 
     public FactureFermee(Facture facture){
-        facture.setEtat(FactureEtat.FERMEE);
+        this.facture = facture;
+        this.facture.setEtat(FactureEtat.FERMEE);
     }
     public void associerClientFacture(Client client){
         System.out.println("Vous ne pouvez pas associer un client a ce stade");
